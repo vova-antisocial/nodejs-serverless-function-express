@@ -1,8 +1,16 @@
-import type { VercelRequest, VercelResponse } from '@vercel/node'
+export default async function handler(req, res) {
+  if (req.method !== "POST") {
+    return res.status(405).json({ message: "Method Not Allowed" });
+  }
 
-export default function handler(req: VercelRequest, res: VercelResponse) {
-  const { name = 'World' } = req.query
-  return res.json({
-    message: `Hello ${name}!`,
-  })
+  const body = req.body;
+  console.log("🔔 Received webhook:", body);
+
+  if (body.notificationType === "PING") {
+    return res.status(200).json({ status: "pong" });
+  }
+
+  // Обработка других типов событий
+  console.log("Handling event:", body.notificationType);
+  return res.status(200).json({ status: "received" });
 }
