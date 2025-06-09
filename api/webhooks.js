@@ -8,16 +8,13 @@ export default async function handler(req, res) {
   }
 
   const body = req.body;
-  console.log("🔔 Received webhook:", body);
 
   if (body.notificationType === "PING") {
     return res.status(200).json({
-      status: "pong",
-      name: "order_created",
-      version: "1.0"
+      notificationType: "PONG",
+      time: body.time || new Date().toISOString()
     });
   }
 
-  console.log("Handling event:", body.notificationType);
   return res.status(200).json({ status: "received" });
 }
