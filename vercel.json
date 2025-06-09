@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "routes": [
+    {
+      "src": "/ntsAQwtyqmxsUrO5BKnqF/notification",
+      "dest": "/api/webhooks.js",
+      "methods": ["POST", "GET"]
+    }
+  ]
+}
