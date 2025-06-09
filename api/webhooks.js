@@ -12,7 +12,9 @@ export default async function handler(req, res) {
   if (body.notificationType === "PING") {
     return res.status(200).json({
       notificationType: "PONG",
-      time: body.time || new Date().toISOString()
+      time: body.time || new Date().toISOString(),
+      name: "my-webhook-name",
+      version: "1.0"
     });
   }
 
