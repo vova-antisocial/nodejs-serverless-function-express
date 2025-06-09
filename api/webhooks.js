@@ -11,7 +11,7 @@ export default async function handler(req, res) {
   console.log("🔔 Received webhook:", body);
 
   if (body.notificationType === "PING") {
-    return res.status(200).json({ status: "pong", name: "my-vercel-webhook" });
+    return res.status(200).json({ status: "pong", name: "order_created" });
   }
 
   console.log("Handling event:", body.notificationType);
